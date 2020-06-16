@@ -1,0 +1,10 @@
+QT.KIOWidgets.VERSION = 5.27.0
+QT.KIOWidgets.MAJOR_VERSION = 5
+QT.KIOWidgets.MINOR_VERSION = 27
+QT.KIOWidgets.PATCH_VERSION = 0
+QT.KIOWidgets.name = KF5KIOWidgets
+QT.KIOWidgets.defines = 
+QT.KIOWidgets.includes = /kate.appdir/usr/include/KF5/KIOWidgets
+QT.KIOWidgets.private_includes =
+QT.KIOWidgets.libs = /kate.appdir/usr/lib64
+QT.KIOWidgets.depends = KIOCore KBookmarks KXmlGui Solid

@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.kde.kiod5
+Exec=/kate.appdir/usr/lib64/libexec/kf5/kiod5
+

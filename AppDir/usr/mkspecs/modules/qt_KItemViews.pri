@@ -1,0 +1,10 @@
+QT.KItemViews.VERSION = 5.27.0
+QT.KItemViews.MAJOR_VERSION = 5
+QT.KItemViews.MINOR_VERSION = 27
+QT.KItemViews.PATCH_VERSION = 0
+QT.KItemViews.name = KF5ItemViews
+QT.KItemViews.defines = 
+QT.KItemViews.includes = /kate.appdir/usr/include/KF5/KItemViews
+QT.KItemViews.private_includes =
+QT.KItemViews.libs = /kate.appdir/usr/lib64
+QT.KItemViews.depends = widgets

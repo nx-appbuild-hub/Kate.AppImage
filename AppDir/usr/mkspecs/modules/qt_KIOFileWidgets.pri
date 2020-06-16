@@ -1,0 +1,10 @@
+QT.KIOFileWidgets.VERSION = 5.27.0
+QT.KIOFileWidgets.MAJOR_VERSION = 5
+QT.KIOFileWidgets.MINOR_VERSION = 27
+QT.KIOFileWidgets.PATCH_VERSION = 0
+QT.KIOFileWidgets.name = KF5KIOFileWidgets
+QT.KIOFileWidgets.defines = 
+QT.KIOFileWidgets.includes = /kate.appdir/usr/include/KF5/KIOFileWidgets
+QT.KIOFileWidgets.private_includes =
+QT.KIOFileWidgets.libs = /kate.appdir/usr/lib64
+QT.KIOFileWidgets.depends = KIOWidgets KBookmarks KXmlGui Solid

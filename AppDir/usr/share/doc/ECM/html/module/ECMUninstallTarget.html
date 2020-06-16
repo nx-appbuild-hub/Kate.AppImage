@@ -1,0 +1,139 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ECMUninstallTarget &mdash; Extra CMake Modules 5.27.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/ecm.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '5.27.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/kde-favicon.ico"/>
+    <link rel="top" title="Extra CMake Modules 5.27.0 documentation" href="../index.html" />
+    <link rel="up" title="ecm-modules(7)" href="../manual/ecm-modules.7.html" />
+    <link rel="next" title="ECMUseFindModules" href="ECMUseFindModules.html" />
+    <link rel="prev" title="ECMSetupVersion" href="ECMSetupVersion.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ECMUseFindModules.html" title="ECMUseFindModules"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ECMSetupVersion.html" title="ECMSetupVersion"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">ECM 5.27 documentation</a> &raquo;</li>
+          <li><a href="../manual/ecm-modules.7.html" accesskey="U">ecm-modules(7)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ecmuninstalltarget">
+<span id="module:ECMUninstallTarget"></span><h1>ECMUninstallTarget<a class="headerlink" href="#ecmuninstalltarget" title="Permalink to this headline">¶</a></h1>
+<p>Add an <tt class="docutils literal"><span class="pre">uninstall</span></tt> target.</p>
+<p>By including this module, an <tt class="docutils literal"><span class="pre">uninstall</span></tt> target will be added to your CMake
+project. This will remove all files installed (or updated) by a previous
+invocation of the <tt class="docutils literal"><span class="pre">install</span></tt> target. It will not remove files created or
+modified by an <tt class="docutils literal"><span class="pre">install(SCRIPT)</span></tt> or <tt class="docutils literal"><span class="pre">install(CODE)</span></tt> command; you should
+create a custom uninstallation target for these and use <tt class="docutils literal"><span class="pre">add_dependency</span></tt> to
+make the <tt class="docutils literal"><span class="pre">uninstall</span></tt> target depend on it:</p>
+<div class="highlight-cmake"><div class="highlight"><pre><span class="nb">include</span><span class="p">(</span><span class="s">ECMUninstallTarget</span><span class="p">)</span>
+<span class="nb">install</span><span class="p">(</span><span class="s">SCRIPT</span> <span class="s">install-foo.cmake</span><span class="p">)</span>
+<span class="nb">add_custom_target</span><span class="p">(</span><span class="s">uninstall_foo</span> <span class="s">COMMAND</span> <span class="o">${</span><span class="nv">CMAKE_COMMAND</span><span class="o">}</span> <span class="s">-P</span> <span class="s">uninstall-foo.cmake</span><span class="p">)</span>
+<span class="nb">add_dependency</span><span class="p">(</span><span class="s">uninstall</span> <span class="s">uninstall_foo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The target will fail if the <tt class="docutils literal"><span class="pre">install</span></tt> target has not yet been run (so it is
+not possible to run CMake on the project and then immediately run the
+<tt class="docutils literal"><span class="pre">uninstall</span></tt> target).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">CMake deliberately does not provide an <tt class="docutils literal"><span class="pre">uninstall</span></tt> target by default on
+the basis that such a target has the potential to remove important files
+from a user&#8217;s computer. Use with caution.</p>
+</div>
+<p>Since 1.7.0.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ECMSetupVersion.html"
+                        title="previous chapter">ECMSetupVersion</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ECMUseFindModules.html"
+                        title="next chapter">ECMUseFindModules</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/module/ECMUninstallTarget.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ECMUseFindModules.html" title="ECMUseFindModules"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ECMSetupVersion.html" title="ECMSetupVersion"
+             >previous</a> |</li>
+        <li><a href="../index.html">ECM 5.27 documentation</a> &raquo;</li>
+          <li><a href="../manual/ecm-modules.7.html" >ecm-modules(7)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright KDE Developers.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

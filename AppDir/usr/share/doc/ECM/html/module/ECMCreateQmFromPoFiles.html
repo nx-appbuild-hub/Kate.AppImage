@@ -1,0 +1,171 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ECMCreateQmFromPoFiles &mdash; Extra CMake Modules 5.27.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/ecm.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '5.27.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/kde-favicon.ico"/>
+    <link rel="top" title="Extra CMake Modules 5.27.0 documentation" href="../index.html" />
+    <link rel="up" title="ecm-modules(7)" href="../manual/ecm-modules.7.html" />
+    <link rel="next" title="ECMEnableSanitizers" href="ECMEnableSanitizers.html" />
+    <link rel="prev" title="ECMCoverageOption" href="ECMCoverageOption.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ECMEnableSanitizers.html" title="ECMEnableSanitizers"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ECMCoverageOption.html" title="ECMCoverageOption"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">ECM 5.27 documentation</a> &raquo;</li>
+          <li><a href="../manual/ecm-modules.7.html" accesskey="U">ecm-modules(7)</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ecmcreateqmfrompofiles">
+<span id="module:ECMCreateQmFromPoFiles"></span><h1>ECMCreateQmFromPoFiles<a class="headerlink" href="#ecmcreateqmfrompofiles" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This module is deprecated and will be removed by ECM 1.0. Use
+ECMPoQmTools instead.</p>
+</div>
+<p>Generate QTranslator (.qm) catalogs from Gettext (.po) catalogs.</p>
+<div class="highlight-python"><pre>ecm_create_qm_from_po_files(PO_FILES &lt;file1&gt;... &lt;fileN&gt;
+                            [CATALOG_NAME &lt;catalog_name&gt;]
+                            [INSTALL_DESTINATION &lt;install_destination&gt;])</pre>
+</div>
+<p>Creates the necessary rules to compile .po files into .qm files, and install
+them.</p>
+<p>The .qm files are installed in <tt class="docutils literal"><span class="pre">&lt;install_destination&gt;/&lt;lang&gt;/LC_MESSAGES</span></tt>,
+where &lt;install_destination&gt; is the INSTALL_DESTINATION argument and &lt;lang&gt; is
+extracted from the &#8220;Language&#8221; field inside the .po file.</p>
+<p>INSTALL_DESTINATION defaults to <tt class="docutils literal"><span class="pre">${LOCALE_INSTALL_DIR}</span></tt> if defined,
+otherwise it uses <tt class="docutils literal"><span class="pre">${CMAKE_INSTALL_LOCALEDIR}</span></tt> if that is defined, otherwise
+it uses <tt class="docutils literal"><span class="pre">share/locale</span></tt>.</p>
+<p>CATALOG_NAME defines the name of the installed .qm files. If set, .qm files
+will be installed as <tt class="docutils literal"><span class="pre">&lt;catalog_name&gt;.qm</span></tt>. If not set .qm files will be named
+after the name of their source .po file.</p>
+<p>Setting the catalog name is useful when all .po files for a target are kept
+in a single source directory. For example, the &#8220;mylib&#8221; probject might keep all
+its translations in a &#8220;po&#8221; directory, like this:</p>
+<div class="highlight-python"><pre>po/
+    es.po
+    fr.po</pre>
+</div>
+<p>Without setting CATALOG_NAME, those .po will be turned into .qm and installed
+as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">share</span><span class="o">/</span><span class="n">locale</span><span class="o">/</span><span class="n">fr</span><span class="o">/</span><span class="n">LC_MESSAGES</span><span class="o">/</span><span class="n">fr</span><span class="o">.</span><span class="n">qm</span>
+<span class="n">share</span><span class="o">/</span><span class="n">locale</span><span class="o">/</span><span class="n">es</span><span class="o">/</span><span class="n">LC_MESSAGES</span><span class="o">/</span><span class="n">es</span><span class="o">.</span><span class="n">qm</span>
+</pre></div>
+</div>
+<p>If CATALOG_NAME is set to &#8220;mylib&#8221;, they will be installed as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">share</span><span class="o">/</span><span class="n">locale</span><span class="o">/</span><span class="n">fr</span><span class="o">/</span><span class="n">LC_MESSAGES</span><span class="o">/</span><span class="n">mylib</span><span class="o">.</span><span class="n">qm</span>
+<span class="n">share</span><span class="o">/</span><span class="n">locale</span><span class="o">/</span><span class="n">es</span><span class="o">/</span><span class="n">LC_MESSAGES</span><span class="o">/</span><span class="n">mylib</span><span class="o">.</span><span class="n">qm</span>
+</pre></div>
+</div>
+<p>Which is what the loader created by ecm_create_qm_loader() expects.</p>
+<p>ecm_create_qm_from_po_files() creates a &#8220;translation&#8221; target. This target
+builds all .po files into .qm files.</p>
+<div class="highlight-python"><pre>ecm_create_qm_loader(&lt;source_files_var&gt; &lt;catalog_name&gt;)</pre>
+</div>
+<p>ecm_create_qm_loader() generates a C++ file which ensures translations are
+automatically loaded at startup. The path of the .cpp file is appended to
+&lt;source_files_var&gt;.  Typical usage is like:</p>
+<div class="highlight-cmake"><div class="highlight"><pre><span class="nb">set</span><span class="p">(</span><span class="s">mylib_SRCS</span> <span class="s">foo.cpp</span> <span class="s">bar.cpp</span><span class="p">)</span>
+<span class="nb">ecm_create_qm_loader</span><span class="p">(</span><span class="s">mylib_SRCS</span> <span class="s">mylib</span><span class="p">)</span>
+<span class="nb">add_library</span><span class="p">(</span><span class="s">mylib</span> <span class="o">${</span><span class="nv">mylib_SRCS</span><span class="o">}</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This generates a C++ file which loads &#8220;mylib.qm&#8221; at startup, assuming it has
+been installed by ecm_create_qm_from_po_files(), and compiles it into <tt class="docutils literal"><span class="pre">mylib</span></tt>.</p>
+<p>Since pre-1.0.0.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ECMCoverageOption.html"
+                        title="previous chapter">ECMCoverageOption</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ECMEnableSanitizers.html"
+                        title="next chapter">ECMEnableSanitizers</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/module/ECMCreateQmFromPoFiles.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ECMEnableSanitizers.html" title="ECMEnableSanitizers"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ECMCoverageOption.html" title="ECMCoverageOption"
+             >previous</a> |</li>
+        <li><a href="../index.html">ECM 5.27 documentation</a> &raquo;</li>
+          <li><a href="../manual/ecm-modules.7.html" >ecm-modules(7)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright KDE Developers.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

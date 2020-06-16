@@ -1,0 +1,10 @@
+QT.KGuiAddons.VERSION = 5.27.0
+QT.KGuiAddons.MAJOR_VERSION = 5
+QT.KGuiAddons.MINOR_VERSION = 27
+QT.KGuiAddons.PATCH_VERSION = 0
+QT.KGuiAddons.name = KF5GuiAddons
+QT.KGuiAddons.defines = 
+QT.KGuiAddons.includes = /kate.appdir/usr/include/KF5/KGuiAddons
+QT.KGuiAddons.private_includes =
+QT.KGuiAddons.libs = /kate.appdir/usr/lib64
+QT.KGuiAddons.depends = gui

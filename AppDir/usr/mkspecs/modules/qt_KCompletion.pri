@@ -1,0 +1,10 @@
+QT.KCompletion.VERSION = 5.27.0
+QT.KCompletion.MAJOR_VERSION = 5
+QT.KCompletion.MINOR_VERSION = 27
+QT.KCompletion.PATCH_VERSION = 0
+QT.KCompletion.name = KF5Completion
+QT.KCompletion.defines = 
+QT.KCompletion.includes = /kate.appdir/usr/include/KF5/KCompletion
+QT.KCompletion.private_includes =
+QT.KCompletion.libs = /kate.appdir/usr/lib64
+QT.KCompletion.depends = widgets

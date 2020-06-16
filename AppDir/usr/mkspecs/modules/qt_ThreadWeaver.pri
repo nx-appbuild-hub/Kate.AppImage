@@ -1,0 +1,10 @@
+QT.ThreadWeaver.VERSION = 5.27.0
+QT.ThreadWeaver.MAJOR_VERSION = 5
+QT.ThreadWeaver.MINOR_VERSION = 27
+QT.ThreadWeaver.PATCH_VERSION = 0
+QT.ThreadWeaver.name = KF5ThreadWeaver
+QT.ThreadWeaver.defines = 
+QT.ThreadWeaver.includes = /kate.appdir/usr/include/KF5/ThreadWeaver
+QT.ThreadWeaver.private_includes =
+QT.ThreadWeaver.libs = /kate.appdir/usr/lib64
+QT.ThreadWeaver.depends = core

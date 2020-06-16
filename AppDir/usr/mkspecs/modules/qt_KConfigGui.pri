@@ -1,0 +1,10 @@
+QT.KConfigGui.VERSION = 5.27.0
+QT.KConfigGui.MAJOR_VERSION = 5
+QT.KConfigGui.MINOR_VERSION = 27
+QT.KConfigGui.PATCH_VERSION = 0
+QT.KConfigGui.name = KF5ConfigGui
+QT.KConfigGui.defines = 
+QT.KConfigGui.includes = /kate.appdir/usr/include/KF5/KConfigGui
+QT.KConfigGui.private_includes =
+QT.KConfigGui.libs = /kate.appdir/usr/lib64
+QT.KConfigGui.depends = gui xml KConfigCore

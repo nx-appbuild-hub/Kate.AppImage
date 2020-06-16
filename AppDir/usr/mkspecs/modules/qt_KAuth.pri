@@ -1,0 +1,10 @@
+QT.KAuth.VERSION = 5.27.0
+QT.KAuth.MAJOR_VERSION = 5
+QT.KAuth.MINOR_VERSION = 27
+QT.KAuth.PATCH_VERSION = 0
+QT.KAuth.name = KF5Auth
+QT.KAuth.defines = 
+QT.KAuth.includes = /kate.appdir/usr/include/KF5/KAuth
+QT.KAuth.private_includes =
+QT.KAuth.libs = /kate.appdir/usr/lib64
+QT.KAuth.depends = core KCoreAddons
