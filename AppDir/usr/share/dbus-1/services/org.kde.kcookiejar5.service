@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=org.kde.kcookiejar5
-Exec=/kate.appdir/usr/bin/kded5
-
