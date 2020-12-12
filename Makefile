@@ -1,12 +1,26 @@
-SOURCE="https://download.kde.org/unstable/kate/Kate-16.08-x86_64.AppImage"
-OUTPUT="Kate.AppImage"
+# Copyright 2020 Alex Woroschilow (alex.woroschilow@gmail.com)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+PWD:=$(shell pwd)
 
 all:
-	echo "Building: $(OUTPUT)"
-	rm -f ./$(OUTPUT)
-	wget --output-document=$(OUTPUT) --continue $(SOURCE)
-	xorriso -indev $(OUTPUT) -osirrox on -extract / ./AppDir
-	export ARCH=x86_64 && bin/appimagetool.AppImage AppDir $(OUTPUT)
-	chmod +x $(OUTPUT)
-	rm -rf ./AppDir
+	mkdir --parents $(PWD)/build/Kate.AppDir
+	apprepo --destination=$(PWD)/build appdir kate konsole-kpart
+	echo 'exec $${APPDIR}/bin/kate "$${@}"' >> $(PWD)/build/Kate.AppDir/AppRun
 
+	rm --force $(PWD)/build/Kate.AppDir/*.desktop
+	cp --force $(PWD)/AppDir/*.desktop $(PWD)/build/Kate.AppDir/
+	cp --force $(PWD)/AppDir/*.png $(PWD)/build/Kate.AppDir/ || true
+	cp --force $(PWD)/AppDir/*.svg $(PWD)/build/Kate.AppDir/ || true
+
+
+	export ARCH=x86_64 && $(PWD)/bin/appimagetool.AppImage $(PWD)/build/Kate.AppDir $(PWD)/Kate.AppImage
+	chmod +x $(PWD)/Kate.AppImage
