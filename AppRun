@@ -1,0 +1,38 @@
+#!/bin/bash
+# This software is a part of the A.O.D (https://apprepo.de) project
+# Copyright 2020 Alex Woroschilow (alex.woroschilow@gmail.com)
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+export LD_PRELOAD=${APPDIR}/exec_wrapper.so
+
+export APPIMAGE_ORIGINAL_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+export APPIMAGE_ORIGINAL_QT_PLUGIN_PATH=$QT_PLUGIN_PATH
+export APPIMAGE_ORIGINAL_XDG_DATA_DIRS=$XDG_DATA_DIRS
+export APPIMAGE_ORIGINAL_PATH=$PATH
+
+export LD_LIBRARY_PATH=${APPDIR}/usr/lib/:$LD_LIBRARY_PATH
+export QT_PLUGIN_PATH=${APPDIR}/usr/lib/qt5/plugins/
+export XDG_DATA_DIRS=${APPDIR}/usr/share/:$XDG_DATA_DIRS
+export PATH=${APPDIR}/usr/bin:$PATH
+export KDE_FORK_SLAVES=1
+
+export APPIMAGE_STARTUP_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+export APPIMAGE_STARTUP_QT_PLUGIN_PATH=$QT_PLUGIN_PATH
+export APPIMAGE_STARTUP_XDG_DATA_DIRS=$XDG_DATA_DIRS
+export APPIMAGE_STARTUP_PATH=$PATH
+
+cd ${OWD}
+
+kate "$@"
